@@ -1,0 +1,62 @@
+{
+  "name": "monochrome",
+  "version": "1.0.0",
+  "description": "Test task",
+  "main": "api/app.js",
+  "scripts": {
+    "start:api": "node -r dotenv/config api/app.js",
+    "start:webapp": "node -r dotenv/config webapp/app.js",
+    "prettier": "prettier --write \"**/*.js\"",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint",
+      "git add"
+    ]
+  },
+  "author": {
+    "name": "Volodymyr Pavlov <waldemar6pavlov@gmail.com>",
+    "url": "https://github.com/Grakholsky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Grakholsky/monochrome"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/joi": "^16.1.8",
+    "@koa/router": "^8.0.2",
+    "dotenv": "^8.2.0",
+    "joi": "^14.3.1",
+    "koa": "^2.11.0",
+    "koa-body": "^4.1.1",
+    "koa-csrf": "^3.0.8",
+    "koa-logger": "^3.2.1",
+    "koa-methodoverride": "^2.0.0",
+    "koa-session": "^5.12.3",
+    "koa-static": "^5.0.0",
+    "koa-views": "^6.2.1",
+    "mongoose": "^5.7.12",
+    "pug": "^2.0.4",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.8"
+  },
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+	form.form-product(method='POST' action='/products')
+		.column
+			.row
+				label(for="inputName") Name
+				input#inputName.u-full-width(type='text' name='name' placeholder='Name' required autofocus autocomplete)
+			.row
+				label(for="inputPrice") Price
+				input#inputPrice.u-full-width(type='text' pattern="([0-9]+)((\\.)([0-9][0-9]))*" title='Sample 199.99' name='price' placeholder='Price' required autocomplete)
+			.row
+				label(for="inputStockQuantity") Stock quantity
+				input#inputStockQuantity.u-full-width(type='text' pattern="([0-9]+)" title='Integer only' name='stockQuantity' placeholder='Stock quantity' required autocomplete)
+			.row
+				input#inputCategoryId.hidden(type='text' name='categoryId' value=(categories.length && categories[0].id))
+				label(for="inputCategoryId") Category
+				select#selectCategoryId.u-full-width
+					each category in categories
+						option(value=category.id)= category.name
+
+		input.button-primary(type="submit" value="Create")
+		input(type='hidden', name='_csrf', value=csrf)
+		if error
+			.text-error #{error}
+

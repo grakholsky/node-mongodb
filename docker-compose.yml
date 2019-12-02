@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+
+  app:
+    image: monochrome_task
+    command: pm2-runtime start ecosystem.config.js
+    restart: always
+    volumes:
+      - .:/usr/app
+    ports:
+      - 8080:4000
+    depends_on:
+      - mongo
+    env_file: .env.docker
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+
+volumes:
+  mongodb:

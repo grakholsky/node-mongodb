@@ -1,0 +1,24 @@
+main {
+    margin-top: 24px;
+}
+
+.form-product {
+    max-width: 330px;
+}
+
+td:last-child .form-delete {
+    margin: 0;
+    display: inline-block;
+}
+
+td:last-child .edit-link + .form-delete {
+    margin-left: 8px;
+}
+
+.hidden {
+    display: none;
+}
+
+.text-error {
+    color: #dc3545
+}

@@ -1,0 +1,31 @@
+extends ../layout
+
+block content
+		a.button.button-primary(href="/products/new") Add
+
+		if error
+			.text-error #{error}
+
+		table.u-full-width
+			thead
+				tr
+					th Name
+					th Category
+					th Price
+					th Stock quantity
+					th
+			tbody
+				each product in products
+					tr
+						th= product.name
+						td
+							each category in categories
+								if category.id === product.categoryId
+									span= category.name
+						td= product.price
+						td= product.stockQuantity
+						td
+							a.button.button-primary.edit-link(href="/products/" + product.id + "/edit") Edit
+							form.form-delete(method='POST' action='/products/' + product.id + '?_method=DELETE')
+								input(type='hidden', name='_csrf', value=csrf)
+								button(type="submit") Delete

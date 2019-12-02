@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+
+	if error
+		.text-error #{error}
+
+	table.u-full-width
+		thead
+			tr
+				th Category
+				th Average Price
+				th Summary Quantity
+				th Summary Total
+				th Max Price
+				th Min Price
+		tbody
+			each category in categories
+				if (stats[category.id])
+					tr
+						td= category.name
+						td= stats[category.id].avgPriceByCategory.toFixed(2)
+						td= stats[category.id].sumQuantityByCategory
+						td= stats[category.id].sumTotalByCategory.toFixed(2)
+						td= stats[category.id].maxPriceByCategory.toFixed(2)
+						td= stats[category.id].minPriceByCategory.toFixed(2)

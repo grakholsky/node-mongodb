@@ -1,0 +1,15 @@
+//- layout.pug
+html
+	head
+		include head
+		link(rel='stylesheet' href='/css/navbar.css')
+
+	body
+		include navbar
+
+		main
+			.container
+				block content
+
+		footer
+			include footer
